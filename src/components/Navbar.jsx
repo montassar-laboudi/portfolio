@@ -58,7 +58,7 @@ export default function Navbar() {
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#" aria-label="Back to top" className="flex items-center">
-            <img src="/assets/logos/logo.png" alt="Logo" className="h-8 w-auto object-contain" />
+            <img src={import.meta.env.VITE_LOGO || '/assets/logos/logo.png'} alt="Logo" className="h-8 w-auto object-contain" />
           </a>
 
           {/* Desktop nav links */}
