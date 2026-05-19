@@ -1,71 +1,71 @@
-# Montassar Laboudi — Personal Portfolio
+# Responsive Portfolio — React + Vite
 
-Personal portfolio website built with React, Vite, Tailwind CSS, and Framer Motion.
-
-Live at: [montassar-laboudi.vercel.app](https://montassar-laboudi.vercel.app)
+A single-page portfolio application built with React 18, Vite 5, Tailwind CSS 3, and Framer Motion 11. Fully responsive, dark/light themed, with zero backend — contact form is handled by EmailJS, and all assets are served from environment variables to support CDN overrides.
 
 ---
 
-## Stack
+## Tech Stack
 
-- **React 18** — component architecture
-- **Vite 5** — dev server and production bundler
-- **Tailwind CSS 3** — utility-first styling with custom teal palette and dark mode
-- **Framer Motion 11** — scroll-triggered and entrance animations
-- **EmailJS** — contact form email delivery (no backend)
-- **react-icons** — icon library
-
----
-
-## Sections
-
-| Section | Description |
-|---|---|
-| **Hero** | Name, title, tagline, CTA buttons, social links, animated profile photo |
-| **About** | Bio and skill categories (ML, Signal Processing, Data Science, Tooling) |
-| **Experience** | Timeline of 3 internships (CEA, dB.Sense, Sharing Technologies) |
-| **Projects** | 9 projects — 1 featured (AnimeGPT) + 8 regular cards |
-| **Education** | ENIB, ENIT, IPEIEM with institution logos |
-| **Certifications** | 6 certs — Oracle, NVIDIA, MathWorks, OpenCV, DataCamp |
-| **Contact** | EmailJS-powered form + direct contact info |
+| Layer | Technology | Version |
+|---|---|---|
+| UI framework | React | 18.3 |
+| Build tool | Vite + `@vitejs/plugin-react` | 5.3 |
+| Styling | Tailwind CSS | 3.4 |
+| Animation | Framer Motion | 11.3 |
+| Icons | react-icons | 5.2 |
+| Email | @emailjs/browser | 4.4 |
+| CSS pre-processing | PostCSS + Autoprefixer | 8.4 / 10.4 |
+| Fonts | Sora · Inter · JetBrains Mono (Google Fonts) | — |
 
 ---
 
 ## Project Structure
 
 ```
-src/
-├── components/
-│   ├── Navbar.jsx              ← fixed nav, theme toggle, mobile menu, CV download
-│   ├── Hero.jsx
-│   ├── About.jsx
-│   ├── Experience.jsx
-│   ├── Projects.jsx
-│   ├── Education.jsx
-│   ├── Certifications.jsx
-│   ├── Contact.jsx
-│   ├── Footer.jsx
-│   └── ui/
-│       ├── AnimatedSection.jsx ← reusable intersection-observer scroll wrapper
-│       ├── ProjectCard.jsx     ← featured + regular card variants
-│       ├── SignalBackground.jsx ← canvas-based animated neural network background
-│       ├── Tag.jsx
-│       └── TimelineItem.jsx
-├── context/
-│   └── ThemeContext.jsx        ← dark/light provider, localStorage + system preference
-├── data/
-│   └── content.js              ← all text content and asset URLs (reads from .env)
-├── hooks/
-│   └── useActiveSection.js     ← intersection observer for active nav link
-├── App.jsx
-├── main.jsx
-└── index.css                   ← CSS variables, glass-card, gradient utilities
-public/
-└── assets/
-    ├── photo/                  ← montassar.png
-    ├── projects/               ← project screenshots
-    ├── logos/                  ← company and certification logos
-    └── cv/                     ← Resume_Montassar__Laboudi_Portfolio.pdf
+├── index.html                  # Shell — viewport meta, anti-flash theme script, font preconnect
+├── vite.config.js
+├── tailwind.config.js
+├── postcss.config.js
+├── .env                        # VITE_* personal info + EmailJS credentials (git-tracked template)
+├── .env.local                  # CDN asset URL overrides — git-ignored, optional
+│
+├── public/
+│   └── assets/
+│       ├── photo/              # Profile photo fallback
+│       ├── logos/              # Company / institution logos fallback
+│       ├── projects/           # Project screenshot fallbacks
+│       └── cv/                 # Downloadable PDF
+│
+└── src/
+    ├── main.jsx                # React root mount
+    ├── App.jsx                 # Section composition + ThemeProvider wrapper
+    ├── index.css               # CSS custom properties, glass-card, gradient-text, animations
+    │
+    ├── data/
+    │   └── content.js          # Single source of truth — all text, URLs, and asset refs via import.meta.env
+    │
+    ├── context/
+    │   └── ThemeContext.jsx    # Dark/light provider — localStorage + system preference
+    │
+    ├── hooks/
+    │   └── useActiveSection.js # IntersectionObserver hook — active nav link tracking
+    │
+    └── components/
+        ├── Navbar.jsx          # Fixed nav, theme toggle, mobile hamburger menu, CV download
+        ├── Hero.jsx            # Profile photo, heading, CTA buttons, social links
+        ├── About.jsx           # Bio text + skill category cards
+        ├── Experience.jsx      # Work timeline
+        ├── Projects.jsx        # Featured card + project grid
+        ├── Education.jsx       # Education cards with institution logos
+        ├── Certifications.jsx  # Certification grid
+        ├── Contact.jsx         # EmailJS contact form + direct contact links
+        ├── Footer.jsx
+        └── ui/
+            ├── AnimatedSection.jsx   # Scroll-triggered fade-up wrapper (IntersectionObserver)
+            ├── ProjectCard.jsx       # Featured and regular card variants
+            ├── SignalBackground.jsx  # Canvas-based animated neural network background
+            ├── Tag.jsx               # Teal pill tag
+            └── TimelineItem.jsx      # Single timeline entry
 ```
 
 ---
@@ -73,16 +73,19 @@ public/
 ## Getting Started
 
 ```bash
-# Install dependencies
+# 1. Install dependencies
 npm install
 
-# Start development server
+# 2. Copy and fill the environment file
+cp .env .env.local   # optional — for CDN overrides
+
+# 3. Start the dev server (http://localhost:5173)
 npm run dev
 
-# Production build
+# 4. Production build → /dist
 npm run build
 
-# Preview production build locally
+# 5. Preview the production build locally
 npm run preview
 ```
 
@@ -90,94 +93,162 @@ npm run preview
 
 ## Environment Variables
 
-All variables must be prefixed with `VITE_` to be exposed to the browser.
+All variables are prefixed with `VITE_` so Vite exposes them to the browser via `import.meta.env`.
 
-### `.env` — personal info and EmailJS credentials
+### `.env` — required
 
 ```env
-# Personal info
-VITE_EMAIL=montassar.laboudi@hotmail.com
-VITE_PHONE=+33 7 45 46 66 79
-VITE_LOCATION=Saint-Paul-les-Durance (13115), France
-VITE_LINKEDIN=https://www.linkedin.com/in/montassarlaboudi
-VITE_GITHUB=https://github.com/montassar-laboudi
-VITE_PHOTO=/assets/photo/montassar.png
-VITE_CV=/Resume_Montassar__Laboudi_Portfolio.pdf
+# Contact info
+VITE_EMAIL=
+VITE_PHONE=
+VITE_LOCATION=
+VITE_LINKEDIN=
+VITE_GITHUB=
 
-# EmailJS — contact form
+# Asset paths (local fallbacks)
+VITE_PHOTO=/assets/photo/photo.png
+VITE_LOGO=/assets/logos/logo.png
+VITE_CV=/assets/cv/resume.pdf
+
+# EmailJS (contact form)
 VITE_EMAILJS_SERVICE_ID=service_xxxxxxx
 VITE_EMAILJS_TEMPLATE_ID=template_xxxxxxx
 VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxxxx
 ```
 
-### `.env.local` — external asset URLs (optional, overrides `.env`)
+### `.env.local` — optional CDN overrides
 
-Used to serve photos, logos, and project images from Cloudinary (or any CDN) instead of the `public/` folder.
+Used to point assets to a CDN (e.g., Cloudinary) instead of the `public/` folder. Git-ignored. When absent, the app falls back to the paths declared in `.env`.
 
 ```env
-# Profile photo
-VITE_PHOTO=https://res.cloudinary.com/.../montassar.png
+# Profile photo from CDN
+VITE_PHOTO=https://res.cloudinary.com/<cloud>/image/upload/photo.png
 
-# Company / institution logos
-VITE_LOGO_CEA=...
-VITE_LOGO_ENIB=...
-VITE_LOGO_ENIT=...
-# etc.
+# Logo overrides
+VITE_LOGO=https://res.cloudinary.com/<cloud>/image/upload/logo.png
+VITE_LOGO_COMPANY_A=https://...
+VITE_LOGO_SCHOOL_A=https://...
 
 # Project images
-VITE_IMG_ANIMEGPT=...
-VITE_IMG_DEEPLEARNING=...
-# etc.
+VITE_IMG_PROJECT_A=https://...
+VITE_IMG_PROJECT_B=https://...
 ```
-
-> `.env.local` is git-ignored. When not present, the app falls back to the paths set in `.env`.
 
 ### EmailJS template variables
 
-Create a template at [emailjs.com](https://www.emailjs.com) using these variables:
+Create a template at [emailjs.com](https://www.emailjs.com) using these exact variable names:
 
-- `{{from_name}}` — sender's name
-- `{{from_email}}` — sender's email
-- `{{subject}}` — subject line
-- `{{message}}` — message body
+```
+{{from_name}}    — sender name
+{{from_email}}   — sender email
+{{subject}}      — email subject
+{{message}}      — message body
+```
+
+---
+
+## Content Architecture
+
+All portfolio content is centralized in `src/data/content.js`. Components consume it as named exports — no text or asset URL is hardcoded in any component. To update any section, edit only that file.
+
+```js
+// src/data/content.js
+export const personal = { name, title, photo, cv, github, linkedin, email, ... }
+export const skills   = [ { category, items[] }, ... ]
+export const experience = [ { company, logo, role, period, bullets[] }, ... ]
+export const projects   = [ { title, image, description, tech[], github, live }, ... ]
+export const education  = [ { school, logo, degree, period }, ... ]
+export const certs      = [ { title, issuer, logo, date, link }, ... ]
+```
 
 ---
 
 ## Theme System
 
-- Detects system preference on first visit (`prefers-color-scheme`)
-- Persists choice to `localStorage` under the key `portfolio-theme`
-- Toggle button in the navbar switches between dark and light
-- Uses CSS custom properties (defined in `index.css`) that flip on the `dark` class applied to `<html>`
-- Tailwind `darkMode: 'class'` — configured in `tailwind.config.js`
+| Concern | Implementation |
+|---|---|
+| Detection | `window.matchMedia('prefers-color-scheme: dark')` on first visit |
+| Persistence | `localStorage` key `portfolio-theme` |
+| Application | `.dark` class toggled on `<html>` |
+| Tailwind config | `darkMode: 'class'` |
+| CSS variables | Defined in `:root` and `.dark` blocks in `index.css` |
+| Anti-flash | Inline `<script>` in `index.html` applies theme before first paint |
+
+CSS custom properties used throughout:
+
+```css
+--bg-primary      --bg-secondary     --bg-elevated
+--text-primary    --text-secondary   --text-muted
+--accent          --accent-hover     --accent-glow
+--accent-border   --border-subtle    --section-tint
+--nav-scrolled-bg --menu-overlay-bg
+```
 
 ---
 
-## Customizing Content
+## Animation System
 
-All portfolio content — personal info, skills, experience, projects, education, certifications — is centralized in [`src/data/content.js`](src/data/content.js). No content is hardcoded in components. Edit that file to update any section without touching the UI.
+Framer Motion is used for all motion. Key patterns:
+
+- **Entrance animations** — `initial / animate` on mount with staggered `delay` via the `fadeUp(delay)` factory in `Hero.jsx`
+- **Scroll-triggered** — `whileInView` + `viewport={{ once: true, margin }}` on section cards
+- **Continuous** — `animate` with array keyframes (`[0, -12, 0]`) for the floating profile photo
+- **Page transitions** — `AnimatePresence` for the mobile menu overlay
+- **Canvas animation** — `SignalBackground.jsx` renders a 4-layer neural network (4→6→6→3 nodes) on a `<canvas>`. It pauses via `IntersectionObserver` when off-screen and respects `prefers-reduced-motion`.
+
+---
+
+## Responsive Breakpoints
+
+Tailwind breakpoints used (mobile-first):
+
+| Prefix | Min-width | Use |
+|---|---|---|
+| _(base)_ | 0px | Single-column stacked layout |
+| `sm:` | 640px | 2-column grids (certifications, form fields) |
+| `md:` | 768px | Desktop nav, 2-column project grid |
+| `lg:` | 1024px | 2-column hero/about layouts, larger photo |
+
+No custom CSS `@media` queries — all responsiveness is via Tailwind utility prefixes.
+
+---
+
+## Key UI Utilities (`index.css`)
+
+```css
+.gradient-text    /* teal → cyan → indigo gradient on text via background-clip */
+.glass-card       /* semi-transparent background + backdrop-filter blur + border */
+.section-alt      /* subtle tint for alternating section backgrounds */
+.dot-grid         /* radial-gradient dot-pattern background */
+.photo-ring       /* pulsing box-shadow animation on the profile photo */
+.img-fallback     /* gradient background shown when an image fails to load */
+.img-overlay-top  /* bottom-to-transparent gradient over project card images */
+.img-overlay-right /* left-to-right gradient for featured card image blend */
+.nav-scrolled     /* frosted-glass navbar style after scroll > 50px */
+.menu-overlay     /* full-screen frosted overlay for mobile nav */
+```
 
 ---
 
 ## Deployment
 
-**Vercel (recommended):**
+### Vercel (recommended)
 
-1. Push the repo to GitHub
+1. Push the repository to GitHub
 2. Import the project on [vercel.com](https://vercel.com)
-3. Add all `VITE_*` environment variables in the Vercel dashboard
-4. Deploy — `vercel.json` handles SPA routing automatically
+3. Set all `VITE_*` environment variables in the Vercel dashboard
+4. Deploy — `vercel.json` configures SPA routing automatically
 
-**GitHub Pages:**
+### GitHub Pages / static host
 
 ```bash
 npm run build
 # Deploy the contents of /dist
-# Note: configure your base path in vite.config.js if not deploying to root
+# If not deploying to the domain root, set `base` in vite.config.js
 ```
 
 ---
 
 ## License
 
-All rights reserved — Montassar Laboudi, 2026.
+[MIT](./LICENSE) © 2026 Montassar Laboudi

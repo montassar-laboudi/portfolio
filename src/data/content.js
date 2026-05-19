@@ -270,14 +270,15 @@ export const education = [
     notes: 'Specialization in signal processing, telecommunications, and AI. Dual-degree program with ENIT.',
   },
   {
-    school: "École Nationale d'Ingénieurs de Tunis (ENIT)",
-    logo:     import.meta.env.VITE_LOGO_ENIT,
-    fallback: 'ENIT',
-    degree: 'Engineering Degree — Data Science for Embedded Communications',
-    period: '2022 – 2025',
-    location: 'Tunis, Tunisia',
-    notes: 'Five-year engineering program. Dual degree awarded jointly with Bretagne INP – ENIB.',
-  },
+  school: "École Nationale d'Ingénieurs de Tunis (ENIT)",
+  logo:     import.meta.env.VITE_LOGO_ENIT,
+  fallback: 'ENIT',
+  degree: 'Telecommunications Engineering Degree — Specialized in Data Science for Embedded Communications',
+  period: '2022 – 2025',
+  location: 'Tunis, Tunisia',
+  notes: 'Three-year engineering program. Dual degree awarded jointly with Bretagne INP – ENIB.',
+},
+
   {
     school: "IPEIEM — Institut Préparatoire aux Études d'Ingénieurs d'El Manar",
     logo:     import.meta.env.VITE_LOGO_IPEIEM,

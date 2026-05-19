@@ -10,38 +10,50 @@ export default function About() {
   return (
     <section id="about" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <AnimatedSection>
-          <span className="text-xs font-mono text-teal uppercase tracking-widest mb-2 block">Who I am</span>
-          <h2 className="text-3xl lg:text-4xl font-display font-bold text-[var(--text-primary)] mb-2">About</h2>
-          <div className="w-12 h-1 bg-teal rounded mb-14" />
-        </AnimatedSection>
-
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <AnimatedSection>
-            <p className="text-[var(--text-secondary)] leading-relaxed mb-5">
-              I am a graduate engineer from{' '}
-              <span className="text-teal font-medium">Bretagne INP – ENIB</span> (Master of Science in Signal
-              Processing and Telecommunications) and the{' '}
-              <span className="text-teal font-medium">École Nationale d'Ingénieurs de Tunis – ENIT</span>{' '}
-              (Telecommunications Engineering Degree, specialized in Data Science for Embedded Communications),
-              preceded by two years of intensive preparatory classes in Physics and Technology at{' '}
-              <span className="text-teal font-medium">IPEIEM, Tunis</span>.
-            </p>
-            <p className="text-[var(--text-secondary)] leading-relaxed mb-5">
-              I have practical experience developing and deploying machine learning and deep learning systems
-              on real-world data — 3D experimental images, audio signals, infrared diagnostics, and industrial
-              sensor streams — in environments with strict compute, memory, and latency constraints. I am
-              comfortable operating in multidisciplinary research settings alongside engineers, researchers,
-              and physicists, and I maintain a strong standard of code quality, reproducibility, and
-              collaborative tooling.
-            </p>
-            <p className="text-[var(--text-secondary)] leading-relaxed">
-              I am looking for a position in AI, signal processing, or data science where I can contribute
-              to concrete technical projects and continue developing across both research and engineering
-              dimensions.
-            </p>
-          </AnimatedSection>
 
+          {/* LEFT — heading + text */}
+          <div>
+            <AnimatedSection>
+              <span className="text-xs font-mono text-teal uppercase tracking-widest mb-2 block">Who I am</span>
+              <h2 className="text-3xl lg:text-4xl font-display font-bold text-[var(--text-primary)] mb-2">About</h2>
+              <div className="w-12 h-1 bg-teal rounded mb-14" />
+
+              <p className="text-base text-[var(--text-secondary)] leading-loose mb-6">
+                AI and signal processing engineer, graduated from{' '}
+                <span className="text-teal font-medium">Bretagne INP – ENIB</span> and{' '}
+                <span className="text-teal font-medium">ENIT</span> (Telecommunications Engineering,
+                Data Science for Embedded Communications), with preparatory classes in Physics
+                and Technology at <span className="text-teal font-medium">IPEIEM, Tunis</span>.
+              </p>
+              <p className="text-base text-[var(--text-secondary)] leading-loose mb-6">
+                I build ML and deep learning systems on real-world data — 3D images, audio signals,
+                infrared diagnostics, experimental sensor streams — and deploy them under strict
+                compute and latency constraints. I have worked in multidisciplinary research
+                environments at the CEA alongside engineers, researchers, and physicists.
+              </p>
+              <p className="text-base text-[var(--text-secondary)] leading-loose">
+                Open to positions in AI, signal processing, or data science where engineering
+                depth and research rigor both matter.
+              </p>
+
+              <div className="mt-12 flex items-center gap-6">
+                <span className="text-sm font-mono text-[var(--text-secondary)] uppercase tracking-widest">
+                  French · English · Arabic
+                </span>
+                <span className="flex items-center gap-2 bg-teal/10 border border-teal/20 px-3 py-1 rounded-full">
+                  <motion.span
+                    className="w-2 h-2 rounded-full bg-green-400"
+                    animate={{ opacity: [1, 0.3, 1] }}
+                    transition={{ repeat: Infinity, duration: 1.8 }}
+                  />
+                  <span className="text-sm text-teal font-mono">Available</span>
+                </span>
+              </div>
+            </AnimatedSection>
+          </div>
+
+          {/* RIGHT — skills, starts at same level as heading */}
           <div className="space-y-3">
             {skills.map((skill, si) => {
               const Icon = SKILL_ICONS[si] ?? FiCode
@@ -65,6 +77,7 @@ export default function About() {
               )
             })}
           </div>
+
         </div>
       </div>
     </section>

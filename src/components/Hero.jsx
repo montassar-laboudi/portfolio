@@ -16,12 +16,12 @@ function ProfilePhoto() {
       transition={{ duration: 0.7, ease: 'easeOut' }}
     >
       <motion.div
-        className="absolute w-80 h-80 rounded-full bg-teal/8 blur-3xl"
+        className="absolute w-52 h-52 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full bg-teal/8 blur-3xl"
         animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.7, 0.5] }}
         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="relative w-60 h-60 lg:w-72 lg:h-72 rounded-full overflow-hidden photo-ring border-2 border-teal/40 z-10"
+        className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-72 lg:h-72 rounded-full overflow-hidden photo-ring border-2 border-teal/40 z-10"
         animate={{ y: [0, -12, 0] }}
         transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
         whileHover={{ scale: 1.05, y: -16 }}
@@ -59,8 +59,8 @@ export default function Hero() {
         <div className="w-[600px] h-[600px] rounded-full bg-teal/4 blur-[80px]" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-16 items-center w-full">
-        <div>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-10 lg:py-20 grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
+        <div className="order-2 lg:order-1">
           <motion.div {...fadeUp(0)} className="mb-4">
             <span className="font-mono text-sm text-teal">{'< Available for Opportunities />'}</span>
           </motion.div>
@@ -119,7 +119,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="hidden lg:flex justify-center items-center"
+          className="flex justify-center items-center order-1 lg:order-2"
         >
           <ProfilePhoto />
         </motion.div>
