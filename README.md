@@ -96,13 +96,13 @@ All variables must be prefixed with `VITE_` to be exposed to the browser.
 
 ```env
 # Personal info
-VITE_EMAIL=montassar.laboudi@hotmail.com
-VITE_PHONE=+33 7 45 46 66 79
-VITE_LOCATION=Saint-Paul-les-Durance (13115), France
-VITE_LINKEDIN=https://www.linkedin.com/in/montassarlaboudi
-VITE_GITHUB=https://github.com/montassar-laboudi
-VITE_PHOTO=/assets/photo/montassar.png
-VITE_CV=/Resume_Montassar__Laboudi_Portfolio.pdf
+VITE_EMAIL=
+VITE_PHONE=
+VITE_LOCATION=
+VITE_LINKEDIN=
+VITE_GITHUB=
+VITE_PHOTO=
+VITE_CV=
 
 # EmailJS — contact form
 VITE_EMAILJS_SERVICE_ID=service_xxxxxxx
