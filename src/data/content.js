@@ -182,17 +182,17 @@ export const projects = [
     tech: ['Python', 'FastAPI', 'RAG', 'LangChain', 'Vector Database', 'Docker', 'CI/CD', 'Oracle Cloud', 'NLP'],
   },
   {
-    id: 'deeplearning',
-    title: 'Deep Learning Image Classification',
-    image: import.meta.env.VITE_IMG_DEEPLEARNING,
-    github: 'https://github.com/montassar-laboudi/MetENet-CNN-Image-Classification-MATLAB',
-    live: null,
-    confidential: false,
-    featured: false,
-    description:
-      'Design and training of convolutional neural networks for multi-dataset image classification. Covered data augmentation strategies, hyperparameter optimization, architecture comparison, and rigorous evaluation via standard metrics. Emphasis on experiment reproducibility and benchmarking against state-of-the-art baselines. Conducted at IMT Atlantique / ENIB.',
-    tech: ['MATLAB','CNN', 'Data Augmentation', 'Classification', 'Experimental Validation'],
-  },
+  id: 'deeplearning',
+  title: 'Deep Learning Image Classification',
+  image: import.meta.env.VITE_IMG_DEEPLEARNING,
+  github: 'https://github.com/montassar-laboudi/MetENet-CNN-Image-Classification-MATLAB-Python',
+  live: null,
+  confidential: false,
+  featured: false,
+  description:
+    'Design and training of convolutional neural networks for image classification using both MATLAB and Python (PyTorch). The project implements a custom CNN architecture (MetENet) and evaluates it on CIFAR-10, with additional experiments on Fashion-MNIST and SVHN. It includes a comparative analysis between MATLAB and PyTorch implementations, highlighting how differences in preprocessing, initialization, and training settings can impact final accuracy. The work also covers data augmentation, hyperparameter optimization, architecture comparison, and rigorous evaluation using standard classification metrics. Conducted at IMT Atlantique / ENIB.',
+  tech: ['MATLAB', 'Python', 'PyTorch', 'CNN', 'CIFAR-10', 'Data Augmentation', 'Hyperparameter Tuning', 'Classification', 'Experimental Validation'],
+},
   {
     id: 'acoustics',
     title: 'Acoustic Signal Analysis — CEA WEST / HADES',
